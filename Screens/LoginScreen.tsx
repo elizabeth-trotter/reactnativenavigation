@@ -5,7 +5,7 @@ import LoginFormComponent from '../Components/LoginFormComponent'
 const LoginScreen = () => {
   return (
     <ImageBackground source={require('../assets/unsp.jpg')} style={styles.background}>
-        <View>
+        <View style={styles.Container}>
             <LoginFormComponent />
         </View>
     </ImageBackground>
@@ -19,5 +19,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    Container: {
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderRadius: 10
     }
 })

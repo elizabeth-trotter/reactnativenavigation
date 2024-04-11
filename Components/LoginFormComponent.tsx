@@ -1,6 +1,8 @@
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
+import { createAccount, login } from '../DataServices/Dataservices';
+import { IToken } from '../Interfaces/Interfaces';
 
 const LoginFormComponent = () => {
     const [username, setUsername] = useState<string>('');
@@ -9,18 +11,30 @@ const LoginFormComponent = () => {
 
     const navigate = useNavigation();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const userData = {
             username: username,
             password: password
         }
 
-        navigate.navigate("ProfileScreen")
+        if(edit){
+            let token: IToken = await login(userData);
+            console.log(token);
+            if(token){
+                navigate.navigate("ProfileScreen");
+            }
+        }else{
+            createAccount(userData);
+        }
+    };
+
+    const handleChange = () => {
+        setEdit(!edit);
     };
 
     return (
         <View style={styles.Container}>
-            <Text style={{ paddingBottom: 25, fontSize: 35, fontWeight: 'bold' }}>{edit ? 'Login Page' : 'Registration Page'}</Text>
+            <Text style={{ paddingBottom: 25, fontSize: 35, fontWeight: 'bold' }}>{edit ? 'Login' : 'Registration'}</Text>
             <TextInput
                 style={styles.Input}
                 placeholder='Username'
@@ -34,8 +48,8 @@ const LoginFormComponent = () => {
                 onChangeText={setPassword}
                 secureTextEntry
             />
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '75%'}}>
-                <Text style={{color: 'blue', textDecorationLine: 'underline', fontSize: 25}}>{edit ? 'Register': 'Login'}</Text>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '75%', paddingTop: 15}}>
+                <Text onPress={handleChange} style={{color: 'blue', textDecorationLine: 'underline', fontSize: 20}}>{edit ? 'Register': 'Login'}</Text>
                 <Button title='Submit' onPress={handleSubmit} />
             </View>
         </View>
@@ -58,6 +72,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: 'white',
         marginBottom: 10,
-        paddingLeft: 10
+        paddingHorizontal: 10
     }
 })
