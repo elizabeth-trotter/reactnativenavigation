@@ -2,7 +2,7 @@
 
 **Objective:**
 
-- Begin building a martial arts blog in `React Native`
+- Begin building a Login screen, Profile screen, and Data screen `React Native`
 - Ability to create an account and login
 - Complete learning goals
 
@@ -17,5 +17,5 @@
 <div align="center">
 <img src="./login.png" alt="Login preview" height="500">&nbsp;
 <img src="./registration.png" alt="Registration preview" height="500">
-<p>Figure 1 & 2: Viewing development screenshots of Martial Arts Blog App on Pixel 8 Pro</p>
+<p>Figure 1 & 2: Development screenshots of React Native App on Pixel 8 Pro</p>
 </div>

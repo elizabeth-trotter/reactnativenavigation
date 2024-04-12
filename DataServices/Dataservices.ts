@@ -38,3 +38,9 @@ export const login = async (userInfo: IUserInfo) => {
     const data: IToken = await res.json();
     return data;
 }
+
+export const nartutoFetch = async () => {
+    const promise = await fetch('https://narutodb.xyz/api/character/777');
+    const data = await promise.json();
+    return data;
+};
