@@ -2,7 +2,7 @@
 
 **Objective:**
 
-- Begin building a Login screen, Profile screen, and Data screen `React Native`
+- Begin building a Login screen, Profile screen, and Data screen with `React Native`
 - Ability to create an account and login
 - Complete learning goals
 
